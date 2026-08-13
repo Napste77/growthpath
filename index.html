@@ -352,7 +352,6 @@ ul{list-style:none}
 .channel:last-child{border-bottom:1px solid var(--border-strong)}
 .channel-ico{width:44px;height:44px;flex:none;border-radius:12px;display:grid;place-items:center;background:var(--panel);color:var(--accent)}
 .channel-ico svg{width:22px;height:22px}
-.channel-ico.wa{background:#25D366;color:#fff}
 .channel .t{font-size:.82rem;color:var(--muted);font-weight:500}
 .channel .v{font-weight:600;color:var(--ink)}
 
@@ -368,6 +367,11 @@ input,select,textarea{
 input::placeholder,textarea::placeholder{color:var(--muted)}
 input:focus,select:focus,textarea:focus{outline:none;border-color:var(--violet);box-shadow:0 0 0 4px rgba(113,0,242,.14)}
 textarea{resize:vertical;min-height:110px}
+.input-wrap{position:relative}
+.input-wrap>svg{position:absolute;left:.9rem;top:.82rem;width:18px;height:18px;color:var(--muted);pointer-events:none}
+.input-wrap input,.input-wrap select,.input-wrap textarea{padding-left:2.55rem}
+.input-wrap select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M6 9l6 6 6-6' stroke='%23A99CC4' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right .9rem center;padding-right:2.4rem}
+.input-wrap:focus-within>svg{color:var(--accent)}
 form .btn-primary{width:100%;justify-content:center;margin-top:.4rem}
 .form-note{font-size:.82rem;color:var(--muted);margin-top:.9rem;text-align:center}
 .form-success{display:none;background:var(--panel);border:1px solid var(--border-strong);border-radius:12px;padding:1rem;color:var(--accent);font-weight:600;text-align:center;margin-top:1rem}
@@ -472,7 +476,7 @@ form .btn-primary{width:100%;justify-content:center;margin-top:.4rem}
         <div class="mesh"></div>
         <div class="trama"></div>
         <div class="content">
-          <div class="gp-logo">Grow<span class="slash">/</span>th<span class="l2"><span class="slash">/</span>Path<span class="dot">.</span></span></div>
+          <div class="gp-logo">Growth<span class="l2"><span class="slash">/</span>Path<span class="dot">.</span></span></div>
           <div class="hero-chip">
             <div class="t">Tu estrategia, paso a paso</div>
             <div class="v">Entendés cada decisión</div>
@@ -671,22 +675,6 @@ form .btn-primary{width:100%;justify-content:center;margin-top:.4rem}
   </div>
 </section>
 
-<!-- ================= CTA CONVERSIÓN ================= -->
-<section class="section" aria-labelledby="convert-title">
-  <div class="wrap">
-    <div class="convert reveal">
-      <div class="trama" aria-hidden="true"></div>
-      <div class="convert-inner">
-        <h2 id="convert-title">¿Tenés un negocio que podría crecer más?</h2>
-        <p>Contanos qué necesitás y analicemos juntos cómo potenciarlo. La primera charla es sin costo y sin compromiso.</p>
-        <a href="#contacto" class="btn btn-lavender">Quiero hablar con Growth Path
-          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ================= CONTACTO ================= -->
 <section class="section contact" id="contacto" aria-labelledby="contact-title">
   <div class="wrap contact-grid">
@@ -697,8 +685,8 @@ form .btn-primary{width:100%;justify-content:center;margin-top:.4rem}
 
       <!-- TODO: reemplazar el href por el número real -> https://wa.me/54911XXXXXXXX -->
       <a class="channel" href="https://wa.me/" target="_blank" rel="noopener">
-        <span class="channel-ico wa" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2Zm5.5 14.1c-.2.6-1.2 1.2-1.7 1.2-.4 0-1 .1-3-1s-3.5-3.4-3.6-3.6-1-1.3-1-2.5.6-1.8.8-2 .5-.3.6-.3h.5c.2 0 .4 0 .6.5l.7 1.7c0 .2.1.3 0 .5l-.4.6-.3.3c-.1.1-.2.3 0 .5l1 1.5c.5.6 1 .9 1.4 1.1.2.1.4.1.5-.1l.6-.8c.2-.2.3-.2.5-.1l1.6.8c.2.1.4.2.4.3.1.2.1.6-.1 1.2Z"/></svg>
+        <span class="channel-ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M4 19.6l1.25-3.6A7.6 7.6 0 1 1 8.1 18.4L4 19.6Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M9.2 9.3c.16-.4.34-.4.54-.4h.38c.16 0 .34 0 .5.38l.53 1.28c.06.14 0 .3-.09.4l-.34.4c-.1.1-.14.24-.05.38.3.53.74.97 1.32 1.32.15.1.29.05.39-.05l.4-.44c.1-.1.24-.15.38-.09l1.25.54c.26.1.35.2.35.35 0 .48-.36 1.06-.83 1.26-.4.16-.9.16-1.97-.28-1.53-.63-2.55-2.06-2.85-2.5-.1-.15-.68-.93-.68-1.77 0-.83.44-1.23.6-1.38Z" fill="currentColor"/></svg>
         </span>
         <span>
           <span class="t">WhatsApp</span>
@@ -733,31 +721,48 @@ form .btn-primary{width:100%;justify-content:center;margin-top:.4rem}
       <div class="field-row">
         <div class="field">
           <label for="f-nombre">Nombre</label>
-          <input type="text" id="f-nombre" name="nombre" autocomplete="name" placeholder="Tu nombre" required />
+          <div class="input-wrap">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="8" r="3.2" stroke="currentColor" stroke-width="1.6"/><path d="M5.5 19a6.5 6.5 0 0 1 13 0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            <input type="text" id="f-nombre" name="nombre" autocomplete="name" placeholder="Tu nombre" required />
+          </div>
         </div>
         <div class="field">
           <label for="f-empresa">Empresa</label>
-          <input type="text" id="f-empresa" name="empresa" autocomplete="organization" placeholder="Nombre de tu emprendimiento" />
+          <div class="input-wrap">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="8" width="16" height="13" rx="1.6" stroke="currentColor" stroke-width="1.6"/><path d="M4 8l2-4h12l2 4M10 21v-4h4v4" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+            <input type="text" id="f-empresa" name="empresa" autocomplete="organization" placeholder="Tu empresa" />
+          </div>
         </div>
       </div>
       <div class="field">
         <label for="f-email">Email</label>
-        <input type="email" id="f-email" name="email" autocomplete="email" placeholder="tu@email.com" required />
+        <div class="input-wrap">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5" stroke="currentColor" stroke-width="1.6"/><path d="M4 7l8 6 8-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <input type="email" id="f-email" name="email" autocomplete="email" placeholder="tu@email.com" required />
+        </div>
       </div>
       <div class="field">
         <label for="f-tema">¿En qué podemos ayudarte?</label>
+        <div class="input-wrap">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h10M4 17h6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
         <select id="f-tema" name="tema">
           <option value="Estrategia de marketing">Estrategia de marketing</option>
           <option value="Publicidad digital">Publicidad digital (Ads)</option>
           <option value="Redes sociales">Redes sociales y contenido</option>
           <option value="SEO">SEO / posicionamiento</option>
+          <option value="Creación de sitio web">Creación de sitio web</option>
+          <option value="Creación de API / integración">Creación de API / integración</option>
           <option value="Automatización con IA">Automatización con IA</option>
           <option value="Otro">Otro</option>
         </select>
+        </div>
       </div>
       <div class="field">
         <label for="f-mensaje">Mensaje</label>
-        <textarea id="f-mensaje" name="mensaje" placeholder="Contanos brevemente qué necesitás..." required></textarea>
+        <div class="input-wrap">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 20h8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M15.5 4.5a2 2 0 0 1 3 3L8 18l-4 1 1-4Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+          <textarea id="f-mensaje" name="mensaje" placeholder="Contanos brevemente qué necesitás..." required></textarea>
+        </div>
       </div>
       <button type="submit" class="btn btn-primary">Enviar consulta
         <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>

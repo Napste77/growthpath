@@ -52,8 +52,8 @@
   "image": "https://growthpath.com.ar/isotipoViolet.webp",
   "areaServed": "AR",
   "slogan": "Hacé crecer tu negocio con marketing que entendés.",
-  "knowsAbout": ["Marketing digital", "Publicidad digital", "Redes sociales", "SEO", "Automatización", "Estrategia de marketing"],
-  "serviceType": ["Estrategia de marketing", "Publicidad digital", "Redes sociales y contenido", "SEO", "Automatización con IA"]
+  "knowsAbout": ["Marketing digital", "Publicidad digital", "SEO", "SEM", "CRM", "Dashboard", "Business Intelligence", "Automatización", "APIs", "Desarrollo web", "Estrategia de marketing"],
+  "serviceType": ["Estrategia de marketing 360", "Publicidad digital", "SEO/SEM", "CRM", "Automatización con IA", "Dashboard y reportes", "Creación de APIs e integraciones", "Creación de sitios web"]
 }
 </script>
 
@@ -331,6 +331,16 @@ ul{list-style:none}
 @media (max-width:480px){.process-grid{grid-template-columns:1fr}}
 
 /* ==========================================================================
+   ALIANZAS / RED DE TRABAJO
+   ========================================================================== */
+.ally{background:var(--panel);border:1px solid var(--border);border-radius:24px;padding:clamp(2rem,4vw,3.5rem);display:grid;grid-template-columns:1.25fr .75fr;gap:clamp(1.5rem,3vw,3rem);align-items:center}
+.ally h2{font-size:var(--step-3);margin:.7rem 0 1rem}
+.ally-text p{color:var(--ink-2);font-size:var(--step-1);line-height:1.45;max-width:48ch}
+.ally-tags{display:flex;flex-wrap:wrap;gap:.6rem;align-content:center}
+.ally-tags li{font-weight:600;font-size:.95rem;color:var(--accent);background:var(--paper);border:1px solid var(--border-strong);padding:.5rem 1rem;border-radius:999px}
+@media (max-width:760px){.ally{grid-template-columns:1fr}}
+
+/* ==========================================================================
    CTA de conversión — gradiente permitido de marca
    ========================================================================== */
 .convert{background:var(--grad-cta);color:#fff;border-radius:24px;padding:clamp(2.5rem,5vw,4.5rem);position:relative;overflow:hidden}
@@ -515,24 +525,10 @@ form .btn-primary{width:100%;justify-content:center;margin-top:.4rem}
         <div class="svc-num">02</div>
         <div class="svc-main">
           <span class="svc-ico" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none"><path d="M12 3a9 9 0 0 0-5 16.5V22l3-1.2a9 9 0 1 0 2-17.8Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M12 8v3l2 1.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </span>
-          <div>
-            <h3>Asesoría digital</h3>
-            <p>Te acompañamos con criterio experto para ordenar tu presencia online y elegir las herramientas correctas, sin gastar de más.</p>
-          </div>
-        </div>
-        <span class="svc-benefit">Decisiones acompañadas</span>
-      </article>
-
-      <article class="svc-row reveal">
-        <div class="svc-num">03</div>
-        <div class="svc-main">
-          <span class="svc-ico" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none"><path d="M3 3v16a2 2 0 0 0 2 2h16" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M7 14l3-3 3 2 5-6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M18 7h3v3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </span>
           <div>
-            <h3>Publicidad digital (Google &amp; Meta Ads)</h3>
+            <h3>Publicidad digital</h3>
             <p>Campañas que atraen clientes reales, no solo clics. Definimos el público correcto y cuidamos cada peso de tu inversión.</p>
           </div>
         </div>
@@ -540,45 +536,59 @@ form .btn-primary{width:100%;justify-content:center;margin-top:.4rem}
       </article>
 
       <article class="svc-row reveal">
-        <div class="svc-num">04</div>
-        <div class="svc-main">
-          <span class="svc-ico" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="14" rx="2.5" stroke="currentColor" stroke-width="1.7"/><path d="M8 21h8M12 18v3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="9" cy="10" r="1.6" fill="currentColor"/><path d="M13 8h4M13 12h3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-          </span>
-          <div>
-            <h3>Redes sociales y contenido</h3>
-            <p>Presencia que construye marca y comunidad. Contenido con intención, coherente con tu identidad y pensado para conectar.</p>
-          </div>
-        </div>
-        <span class="svc-benefit">Marca reconocible</span>
-      </article>
-
-      <article class="svc-row reveal">
-        <div class="svc-num">05</div>
+        <div class="svc-num">03</div>
         <div class="svc-main">
           <span class="svc-ico" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.7"/><path d="M20 20l-3.2-3.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M8 11h6M11 8v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
           </span>
           <div>
-            <h3>SEO — posicionamiento en buscadores</h3>
-            <p>Que te encuentren cuando buscan lo que ofrecés. Trabajo técnico y de contenido para ganar visibilidad sostenida en Google.</p>
+            <h3>SEO/SEM — posicionamiento en buscadores</h3>
+            <p>Que te encuentren cuando buscan lo que ofrecés, con posicionamiento orgánico (SEO) y anuncios en buscadores (SEM).</p>
           </div>
         </div>
         <span class="svc-benefit">Visibilidad sostenida</span>
       </article>
 
       <article class="svc-row reveal">
+        <div class="svc-num">04</div>
+        <div class="svc-main">
+          <span class="svc-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><circle cx="9" cy="8.5" r="3" stroke="currentColor" stroke-width="1.6"/><path d="M3.5 19a5.5 5.5 0 0 1 11 0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M16 6.2a3 3 0 0 1 0 5.6M17.5 19a5.6 5.6 0 0 0-2-4.3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          </span>
+          <div>
+            <h3>CRM — gestión de clientes</h3>
+            <p>Ordenamos y hacemos seguimiento de tus clientes y oportunidades en un solo lugar. Cada contacto avanza y nada se pierde.</p>
+          </div>
+        </div>
+        <span class="svc-benefit">Ningún cliente se pierde</span>
+      </article>
+
+      <article class="svc-row reveal">
+        <div class="svc-num">05</div>
+        <div class="svc-main">
+          <span class="svc-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 3a4 4 0 0 1 4 4v1a4 4 0 0 1 0 8 4 4 0 0 1-8 0 4 4 0 0 1 0-8V7a4 4 0 0 1 4-4Z" stroke="currentColor" stroke-width="1.6"/><path d="M12 8v8M9.5 11.5h5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </span>
+          <div>
+            <h3>Automatización con IA</h3>
+            <p>Automatizamos tareas repetitivas —respuestas, seguimientos, reportes— para que dediques tu tiempo a lo que hace crecer el negocio.</p>
+          </div>
+        </div>
+        <span class="svc-benefit">Menos trabajo manual</span>
+      </article>
+
+      <article class="svc-row reveal">
         <div class="svc-num">06</div>
         <div class="svc-main">
           <span class="svc-ico" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="14" rx="2.5" stroke="currentColor" stroke-width="1.7"/><path d="M3 8h18" stroke="currentColor" stroke-width="1.7"/><path d="M9 12l-1.6 1.6L9 15.2M13 12l1.6 1.6L13 15.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2.5" stroke="currentColor" stroke-width="1.7"/><path d="M8 16v-3M12 16V9M16 16v-5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
           </span>
           <div>
-            <h3>Creación de sitios web</h3>
-            <p>Sitios rápidos, claros y pensados para convertir visitas en clientes. Tu presencia online lista para que la marca crezca.</p>
+            <h3>Dashboard — tus datos en claro</h3>
+            <p>Todos tus números importantes en una sola pantalla, clara y actualizada. Sabés cómo va tu negocio de un vistazo.</p>
           </div>
         </div>
-        <span class="svc-benefit">Presencia que convierte</span>
+        <span class="svc-benefit">Tu negocio de un vistazo</span>
       </article>
 
       <article class="svc-row reveal">
@@ -599,14 +609,14 @@ form .btn-primary{width:100%;justify-content:center;margin-top:.4rem}
         <div class="svc-num">08</div>
         <div class="svc-main">
           <span class="svc-ico" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none"><path d="M12 3a4 4 0 0 1 4 4v1a4 4 0 0 1 0 8 4 4 0 0 1-8 0 4 4 0 0 1 0-8V7a4 4 0 0 1 4-4Z" stroke="currentColor" stroke-width="1.6"/><path d="M12 8v8M9.5 11.5h5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="14" rx="2.5" stroke="currentColor" stroke-width="1.7"/><path d="M3 8h18" stroke="currentColor" stroke-width="1.7"/><path d="M9 12l-1.6 1.6L9 15.2M13 12l1.6 1.6L13 15.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </span>
           <div>
-            <h3>Automatización con IA</h3>
-            <p>Automatizamos tareas repetitivas —respuestas, seguimientos, reportes— para que dediques tu tiempo a lo que hace crecer el negocio.</p>
+            <h3>Creación de sitios web</h3>
+            <p>Sitios rápidos, claros y pensados para convertir visitas en clientes. Tu presencia online lista para que la marca crezca.</p>
           </div>
         </div>
-        <span class="svc-benefit">Menos trabajo manual</span>
+        <span class="svc-benefit">Presencia que convierte</span>
       </article>
     </div>
   </div>
@@ -671,6 +681,27 @@ form .btn-primary{width:100%;justify-content:center;margin-top:.4rem}
         <h3>Optimizamos</h3>
         <p>Medimos, ajustamos y escalamos lo que da resultado. La mejora es continua.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ALIANZAS / RED DE TRABAJO ================= -->
+<section class="section" id="alianzas" aria-labelledby="ally-title">
+  <div class="wrap">
+    <div class="ally reveal">
+      <div class="ally-text">
+        <span class="sec-tag">Red de trabajo</span>
+        <h2 id="ally-title">No crecés solo: sumamos a quien haga falta.</h2>
+        <p>Detrás de Growth Path hay una red de empresas aliadas y profesionales de confianza. Cuando tu proyecto lo pide, incorporamos al especialista indicado —y vos seguís teniendo un solo interlocutor que coordina todo.</p>
+      </div>
+      <ul class="ally-tags" aria-label="Especialidades de la red">
+        <li>Desarrollo</li>
+        <li>Diseño</li>
+        <li>Medios &amp; pauta</li>
+        <li>Contenido</li>
+        <li>Legales</li>
+        <li>Datos</li>
+      </ul>
     </div>
   </div>
 </section>
@@ -746,13 +777,14 @@ form .btn-primary{width:100%;justify-content:center;margin-top:.4rem}
         <div class="input-wrap">
           <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h10M4 17h6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
         <select id="f-tema" name="tema">
-          <option value="Estrategia de marketing">Estrategia de marketing</option>
-          <option value="Publicidad digital">Publicidad digital (Ads)</option>
-          <option value="Redes sociales">Redes sociales y contenido</option>
-          <option value="SEO">SEO / posicionamiento</option>
-          <option value="Creación de sitio web">Creación de sitio web</option>
-          <option value="Creación de API / integración">Creación de API / integración</option>
+          <option value="Estrategia de marketing 360">Estrategia de marketing 360°</option>
+          <option value="Publicidad digital">Publicidad digital</option>
+          <option value="SEO/SEM">SEO/SEM — posicionamiento</option>
+          <option value="CRM">CRM — gestión de clientes</option>
           <option value="Automatización con IA">Automatización con IA</option>
+          <option value="Dashboard">Dashboard — datos y reportes</option>
+          <option value="Creación de APIs e integraciones">Creación de APIs e integraciones</option>
+          <option value="Creación de sitios web">Creación de sitios web</option>
           <option value="Otro">Otro</option>
         </select>
         </div>
@@ -804,12 +836,12 @@ form .btn-primary{width:100%;justify-content:center;margin-top:.4rem}
       <div>
         <h4>Servicios</h4>
         <ul>
-          <li><a href="#servicios">Estrategia y asesoría</a></li>
+          <li><a href="#servicios">Estrategia de marketing 360°</a></li>
           <li><a href="#servicios">Publicidad digital</a></li>
-          <li><a href="#servicios">Redes sociales &amp; SEO</a></li>
-          <li><a href="#servicios">Creación de sitios web</a></li>
-          <li><a href="#servicios">APIs e integraciones</a></li>
+          <li><a href="#servicios">SEO/SEM</a></li>
+          <li><a href="#servicios">CRM &amp; Dashboard</a></li>
           <li><a href="#servicios">Automatización con IA</a></li>
+          <li><a href="#servicios">Sitios web &amp; APIs</a></li>
         </ul>
       </div>
 

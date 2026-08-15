@@ -249,7 +249,7 @@ ul{list-style:none}
    ========================================================================== */
 .hero{position:relative;padding-top:clamp(2.5rem,6vw,5rem);padding-bottom:clamp(3rem,7vw,6rem);overflow:hidden}
 .hero::before{content:"";position:absolute;top:-20%;right:-10%;width:55%;height:80%;background:radial-gradient(circle,rgba(205,144,244,.5),rgba(113,0,242,.14) 45%,transparent 70%);filter:blur(20px);z-index:-1;pointer-events:none}
-.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,4vw,3.5rem);align-items:center}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,4vw,3.5rem);align-items:start}
 .hero-kicker{display:inline-flex;align-items:center;gap:.6rem;font-size:.9rem;font-weight:600;color:var(--accent);margin-bottom:1.4rem}
 .hero-kicker .dot{width:8px;height:8px;border-radius:50%;background:var(--radiant)}
 .hero h1{font-size:var(--step-5);font-weight:900;letter-spacing:-.035em;margin-bottom:1.4rem;color:var(--ink)}
@@ -297,13 +297,14 @@ ul{list-style:none}
    ========================================================================== */
 .clients{padding-block:clamp(2.5rem,5vw,4rem);border-bottom:1px solid var(--border)}
 .clients-title{text-align:center;font-size:var(--step-1);color:var(--muted);font-weight:700;letter-spacing:.01em;margin-bottom:2rem}
-.clients-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;align-items:stretch}
-.clients-grid li{display:flex;align-items:center;justify-content:center;min-height:66px;padding:1rem;border:1px dashed var(--border-strong);border-radius:12px;color:var(--muted);font-weight:600;font-size:.85rem}
-.clients-grid li.has-logo{border-style:solid;border-color:var(--border)}
-.clients-grid img{max-height:46px;width:auto;filter:grayscale(1);opacity:.85;transition:filter .2s var(--ease-out),opacity .2s var(--ease-out)}
-@media (hover:hover){.clients-grid img:hover{filter:none;opacity:1}}
-@media (max-width:900px){.clients-grid{grid-template-columns:repeat(3,1fr)}}
-@media (max-width:480px){.clients-grid{grid-template-columns:repeat(2,1fr)}}
+.clients-marquee{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
+.clients-track{display:flex;align-items:center;width:max-content;animation:marquee 38s linear infinite}
+.clients-marquee:hover .clients-track{animation-play-state:paused}
+.clients-track li{flex:none;margin-right:clamp(2.2rem,5vw,4.5rem);display:flex;align-items:center;justify-content:center;min-height:60px}
+.clients-track img{height:46px;width:auto;object-fit:contain;filter:grayscale(1);opacity:.8;transition:filter .25s var(--ease-out),opacity .25s var(--ease-out)}
+@media (hover:hover){.clients-track img:hover{filter:none;opacity:1}}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.clients-track{animation:none;flex-wrap:wrap;justify-content:center;width:auto;gap:2rem}.clients-track li{margin-right:0}}
 
 /* ==========================================================================
    SERVICIOS
@@ -391,7 +392,15 @@ ul{list-style:none}
 .channel .v{font-weight:600;color:var(--ink)}
 
 .hero-form{width:100%}
-.hero-form-title{font-family:var(--font-display);font-weight:800;font-size:var(--step-1);color:var(--ink);margin-bottom:1rem;letter-spacing:-.02em}
+.hero-form-title{display:none}
+/* Escritorio/tablet: form al lado del hero. Mobile: botón que baja a #empezar y el form al final. */
+.hero-cta-mobile{display:none}
+.empezar{display:none}
+@media (max-width:767px){
+  .hero-cta-mobile{display:inline-flex}
+  .hero-form{display:none}
+  .empezar{display:block}
+}
 form{background:var(--panel);border:1px solid var(--border-strong);border-radius:20px;padding:clamp(1.4rem,3vw,2.2rem);box-shadow:0 24px 60px rgba(0,0,0,.28)}
 .field{margin-bottom:1.1rem}
 .field-row{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem}
@@ -490,13 +499,16 @@ form .btn-primary{width:100%;justify-content:center;margin-top:.4rem}
       <h1 id="hero-title">Hacé crecer tu negocio con marketing que <em>entendés</em> de principio a fin.</h1>
       <p class="hero-sub">Te acompañamos a tomar mejores decisiones de marketing —con estrategia clara y explicada— para que tu negocio crezca de forma real y sostenible.</p>
       <div class="hero-actions">
+        <a href="#empezar" class="btn btn-primary hero-cta-mobile">Quiero potenciar mi negocio
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
         <a href="#servicios" class="btn btn-secondary">Conocé nuestros servicios</a>
       </div>
       <p class="hero-values"><span>Claridad</span><span>Cercanía</span><span>Crecimiento estratégico</span></p>
     </div>
 
-    <!-- Formulario de contacto (captación) -->
-    <div class="hero-form">
+    <!-- Formulario de contacto (captación) — host de escritorio/tablet -->
+    <div class="hero-form" id="formHostDesktop">
       <p class="hero-form-title">Contanos qué necesitás</p>
       <form id="contactForm" novalidate>
         <div class="field-row">
@@ -552,27 +564,6 @@ form .btn-primary{width:100%;justify-content:center;margin-top:.4rem}
         <p class="form-success" id="formSuccess" role="status">¡Gracias! Preparamos tu mensaje. Revisá que se haya abierto tu app de correo para enviarlo.</p>
       </form>
     </div>
-  </div>
-</section>
-
-<!-- ================= CLIENTES / MARCAS ================= -->
-<section class="clients" id="clients" aria-labelledby="clients-title">
-  <div class="wrap">
-    <h2 id="clients-title" class="clients-title">Marcas que ya se dejaron guiar</h2>
-    <ul class="clients-grid" aria-label="Marcas que confían en Growth Path">
-      <!-- Poné las 10 imágenes en una carpeta "clientes/" junto al index.html.
-           Si algún nombre no coincide exactamente, ajustá el src. -->
-      <li class="has-logo"><img src="clientes/1-BxmcP8lI.webp" alt="Marca que confía en Growth Path" loading="lazy"></li>
-      <li class="has-logo"><img src="clientes/2-B6-jWNyM.webp" alt="Marca que confía en Growth Path" loading="lazy"></li>
-      <li class="has-logo"><img src="clientes/3-BSuNAiqK.webp" alt="Marca que confía en Growth Path" loading="lazy"></li>
-      <li class="has-logo"><img src="clientes/4-Cd5kDoSu.webp" alt="Marca que confía en Growth Path" loading="lazy"></li>
-      <li class="has-logo"><img src="clientes/5-D8jWmQ--.webp" alt="Marca que confía en Growth Path" loading="lazy"></li>
-      <li class="has-logo"><img src="clientes/6-BJBaqlr_.webp" alt="Marca que confía en Growth Path" loading="lazy"></li>
-      <li class="has-logo"><img src="clientes/7-B7cMG-F1.webp" alt="Marca que confía en Growth Path" loading="lazy"></li>
-      <li class="has-logo"><img src="clientes/8-DxYoCv43.webp" alt="Marca que confía en Growth Path" loading="lazy"></li>
-      <li class="has-logo"><img src="clientes/9-Csi9PZQi.png" alt="Marca que confía en Growth Path" loading="lazy"></li>
-      <li class="has-logo"><img src="clientes/10-B2RU4qes.png" alt="Marca que confía en Growth Path" loading="lazy"></li>
-    </ul>
   </div>
 </section>
 
@@ -785,6 +776,51 @@ form .btn-primary{width:100%;justify-content:center;margin-top:.4rem}
   </div>
 </section>
 
+<!-- ================= CLIENTES / MARCAS ================= -->
+<section class="clients" id="clients" aria-labelledby="clients-title">
+  <div class="wrap">
+    <h2 id="clients-title" class="clients-title">Marcas que ya se dejaron guiar</h2>
+    <!-- Carrusel infinito. La lista se duplica (aria-hidden) para el loop sin cortes.
+         Poné las 10 imágenes en una carpeta "clientes/" junto al index.html. -->
+    <div class="clients-marquee">
+      <ul class="clients-track" aria-label="Marcas que confían en Growth Path">
+        <li><img src="clientes/1-BxmcP8lI.webp" alt="Marca que confía en Growth Path" loading="lazy"></li>
+        <li><img src="clientes/2-B6-jWNyM.webp" alt="Marca que confía en Growth Path" loading="lazy"></li>
+        <li><img src="clientes/3-BSuNAiqK.webp" alt="Marca que confía en Growth Path" loading="lazy"></li>
+        <li><img src="clientes/4-Cd5kDoSu.webp" alt="Marca que confía en Growth Path" loading="lazy"></li>
+        <li><img src="clientes/5-D8jWmQ--.webp" alt="Marca que confía en Growth Path" loading="lazy"></li>
+        <li><img src="clientes/6-BJBaqlr_.webp" alt="Marca que confía en Growth Path" loading="lazy"></li>
+        <li><img src="clientes/7-B7cMG-F1.webp" alt="Marca que confía en Growth Path" loading="lazy"></li>
+        <li><img src="clientes/8-DxYoCv43.webp" alt="Marca que confía en Growth Path" loading="lazy"></li>
+        <li><img src="clientes/9-Csi9PZQi.png" alt="Marca que confía en Growth Path" loading="lazy"></li>
+        <li><img src="clientes/10-B2RU4qes.png" alt="Marca que confía en Growth Path" loading="lazy"></li>
+        <li aria-hidden="true"><img src="clientes/1-BxmcP8lI.webp" alt="" loading="lazy"></li>
+        <li aria-hidden="true"><img src="clientes/2-B6-jWNyM.webp" alt="" loading="lazy"></li>
+        <li aria-hidden="true"><img src="clientes/3-BSuNAiqK.webp" alt="" loading="lazy"></li>
+        <li aria-hidden="true"><img src="clientes/4-Cd5kDoSu.webp" alt="" loading="lazy"></li>
+        <li aria-hidden="true"><img src="clientes/5-D8jWmQ--.webp" alt="" loading="lazy"></li>
+        <li aria-hidden="true"><img src="clientes/6-BJBaqlr_.webp" alt="" loading="lazy"></li>
+        <li aria-hidden="true"><img src="clientes/7-B7cMG-F1.webp" alt="" loading="lazy"></li>
+        <li aria-hidden="true"><img src="clientes/8-DxYoCv43.webp" alt="" loading="lazy"></li>
+        <li aria-hidden="true"><img src="clientes/9-Csi9PZQi.png" alt="" loading="lazy"></li>
+        <li aria-hidden="true"><img src="clientes/10-B2RU4qes.png" alt="" loading="lazy"></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EMPEZÁ (host del formulario en mobile) ================= -->
+<section class="section empezar" id="empezar" aria-labelledby="empezar-title">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-tag">Empezá</span>
+      <h2 id="empezar-title">Contanos qué necesitás</h2>
+      <p>Dejanos tus datos y te contactamos para analizar juntos cómo potenciar tu negocio.</p>
+    </div>
+    <div id="formHostMobile"></div>
+  </div>
+</section>
+
 <!-- ================= CONTACTO (canales) ================= -->
 <section class="section contact" id="contacto" aria-labelledby="contact-title">
   <div class="wrap">
@@ -928,6 +964,19 @@ form .btn-primary{width:100%;justify-content:center;margin-top:.4rem}
     }, {threshold:0.14, rootMargin:'0px 0px -8% 0px'});
     items.forEach(function(el){ io.observe(el); });
   }
+
+  /* ---- Reubicar el formulario: al lado del hero en desktop/tablet, al final en mobile ---- */
+  (function(){
+    var f = document.getElementById('contactForm');
+    var hostD = document.getElementById('formHostDesktop');
+    var hostM = document.getElementById('formHostMobile');
+    if(!f || !hostD || !hostM) return;
+    var mq = window.matchMedia('(max-width: 767px)');
+    var place = function(){ (mq.matches ? hostM : hostD).appendChild(f); };
+    place();
+    if(mq.addEventListener) mq.addEventListener('change', place);
+    else if(mq.addListener) mq.addListener(place);
+  })();
 
   /* ---- Formulario: sin backend, arma un mailto (conectar a n8n/Formspree luego) ---- */
   var form = document.getElementById('contactForm');
